@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device_width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lotka Life</title>
+    <!-- Our Style Sheet -->
+    <link rel="stylesheet" href='gol2.css'>
+</head>
+<body>
+    <div id='world'>  </div>
+    <script src='gol.js'></script>
+    <Input type='button' id='btnstartstop' value='Start the Game' onclick='startstop();'/>
+	<Input type='button' id='btnreset' value='Reset World' onclick='resetworld();'/>
+	<Input type='button' id='btnshiftview' value='Watch predators' onclick='shiftview();'/>
+	<p>Click a cell to make it into a barrier, where both populations are stuck at zero.  </p>
+	<p> Adjust values below. Play around with the values and see what happens.</p>
+	A:   <input type="button" id="aminus" value='-' onclick='adjust("am");'>
+	<b id='avalue'> 5 </b> 
+	<input type="button" id="aplus" value='+' onclick='adjust("ap");'>
+	&emsp; B:    <input type="button" name="bminus" value='-' onclick='adjust("bm");'>
+	<b id='bvalue'> 6 </b> 
+	<input type="button" id="bplus" value='+' onclick='adjust("bp");'>
+	&emsp; C:    <input type="button" name="cminus" value='-' onclick='adjust("cm");'>
+	<b id='cvalue'> 6 </b> 
+	<input type="button" id="cplus" value='+' onclick='adjust("cp");'>
+	&emsp; D:    <input type="button" name="dminus" value='-' onclick='adjust("dm");'>
+	<b id='dvalue'> 6 </b> 
+	<input type="button" id="dplus" value='+' onclick='adjust("dp");'>
+	
+	<div class="box">
+		Each square is running a Lotka-Volterra predator/prey model but with the total number of predators and prey summed over all neighbouring squares.
+		<p>More mathematically we can say that there are two populations, prey <b>p</b> and predators <b>q</b>. The change in the population of the <b>i, j</b> 'th square is given by the equations </p>
+		<img src="eq1.png" alt="change in p" width=300px>
+		<br>
+		<img src="eq2.png" alt="change in q" width=300px>
+		<br>
+		Where <b>P</b> and <b>Q</b> are the sums of the populations of all the neigbouring squares. Or mathematically said:
+		<br>
+		<img src="eq3.png" alt="def of P" width=200px>
+		<br>
+		<img src="eq4.png" alt="def of Q" width=200px>
+		<p>
+		Please notice the asymmetry in the second equation: The rate at which the predators die in a square is not affected by the neighbouring squares. To keep the factors at the same size we have added a factor nine here (all other parts depend on the population in  squares).
+		Also notice that the model assumes that B (the rate at which the predators eat prey) and C (the rate at which predators die) are negative numbers. If you change them to positive ones, the populations will blow up.
+		</p>
+		<p>
+		The color goes from white (population exactly zero) to the darkest (population 1). The population itself can however increase above 1. Also note that as opposed to the normal Lotka-Volterra equations, here the population of a square can go to exactly zero, but not below that.
+		</p>
+	</div> 
+	
+</body>
+</html>
